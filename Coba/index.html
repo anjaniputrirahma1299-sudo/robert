@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>saepudin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FontAwesome dihapus karena tombol play sekarang menggunakan CSS dari kode kedua -->
     <style>
         /* 📈 RUNNING TEXT SPEK BANDAR EMAS TRANSPARAN 📈 */
         .marquee-container {
@@ -16,7 +16,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10000; /* Naikkan z-index paling atas dari segalanya */
+            z-index: 10000; 
             font-size: 12px;
             font-weight: bold;
             letter-spacing: 0.5px;
@@ -28,13 +28,13 @@
 
         /* 📦 MASTER WRAPPER CONTAINER UNTUK HALAMAN 📦 */
         .main-container {
-            max-width: 1200px; /* Batasi lebar maksimal di PC biar rapi */
+            max-width: 1200px; 
             margin: 0 auto;
             position: relative;
             z-index: 100;
         }
 
-        /* 🎬 KUMPULAN VIDEO CARD (DEFAULT MOBILE: SATU DERET KE BAWAH) 🎬 */
+        /* 🎬 KUMPULAN VIDEO CARD 🎬 */
         .video-grid {
             display: flex;
             flex-direction: column;
@@ -51,67 +51,83 @@
             position: relative;
         }
 
-        /* 🖥️ RESPONSIVE BREAKPOINT: CONFIGURASI GRID BERANDA YOUTUBE DESKTOP/LAPTOP 🖥️ */
         @media (min-width: 768px) {
             .video-grid {
                 display: grid;
-                /* RE-MAP OTOMATIS: 3 KOLOM MENYAMPING DI DESKTOP SPEK YOUTUBE */
                 grid-template-columns: repeat(3, 1fr); 
                 gap: 30px;
                 max-width: 1200px;
                 padding: 0 20px;
             }
             .video-card {
-                max-width: 100%; /* Buat card ngelebar proporsional sesuai grid */
+                max-width: 100%; 
                 margin: 0;
             }
         }
 
-        /* VIDEO TITLE COLOR -> LEMON CURRY */
-        .video-title {
-            color: #CCA817; 
-            font-size: 15px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            padding-left: 8px;
-            border-left: 4px solid #CCA817;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; /* Biar judul video di laptop rapi ga turun baris */
-        }
-        .video-wrapper {
+        /* 📱 LAYAR VIDEO BARU (DARI KODE KEDUA) 📱 */
+        .phone {
             position: relative;
-            display: block;
             width: 92vw;
             aspect-ratio: 9 / 16;
             margin: 0 auto;
             border-radius: 22px;
             overflow: hidden;
+            background: #000;
             box-shadow: 0 10px 30px rgba(2, 6, 23, 0.15);
-            background-color: #000000;
         }
-       .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        
+        @media (min-width: 768px) {
+            .phone {
+                width: 100%; /* Agar proporsional di PC sesuai grid */
+            }
+        }
+
+        .phone video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
             display: block;
         }
-        .icon-transition {
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
-            opacity: 1;
-        }
-        /* CLICK TRAP LAYER PER VIDEO */
-        .click-trap-layer {
+
+        .video-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 9999;
+            background: rgba(0,0,0,0.3);
             cursor: pointer;
-            background: rgba(0,0,0,0.01);
-            display: block; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .play-btn-icon {
+            width: 68px;
+            height: 68px;
+            background: rgba(17, 24, 39, 0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, opacity 0.3s ease;
+        }
+
+        .play-btn-icon:hover {
+            transform: scale(1.08);
+        }
+
+        .play-btn-icon::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid #ffffff;
+        }
+
         /* STYLING BOX LINK CROSS-SERVER JALUR GAIB */
         .cross-link-box {
             max-width: 450px;
@@ -124,7 +140,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
         }
-        /* Kalo di Laptop, box menu rekomendasi dibikin agak lebaran dikit biar proporsional */
         @media (min-width: 768px) {
             .cross-link-box {
                 max-width: 600px;
@@ -156,6 +171,7 @@
         .link-anchor:hover {
             color: #CCA817;
         }
+        
         /* STYLING PAGINATOR PALSU KAMUFLASE IKLAN DIRECT LINK */
         .pagination {
             display: flex;
@@ -182,25 +198,26 @@
             transform: scale(1.2);
         }
     </style>
-    
 </head>
 <body id="mainBody" style="background-color: #781465; color: #ffffff; font-family: sans-serif; text-align: center; padding: 70px 15px 30px 15px; margin: 0;">
     
         <div class="video-grid">
 
             <div class="video-card">
-                <div class="video-wrapper" id="wrapper1">
-                    <video id="vid1" width="100%" loop muted playsinline style="display: block;">
+                <!-- LAYAR VIDEO BARU MENGGUNAKAN CLASS PHONE -->
+                <div class="phone" id="wrapper1">
+                    <div id="trap1" class="video-overlay" data-url="">
+                        <div id="btn1" class="play-btn-icon"></div>
+                    </div>
+                    <video id="vid1" loop muted playsinline preload="metadata">
                         <source src="../lanjutan2/VID-20260717-WA0032.mp4" type="video/mp4">
                     </video>
-                    <div id="btn1" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
-                        <i id="icon1" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
-                    </div>
-                    <div class="click-trap-layer" id="trap1" data-url=""></div>
                 </div>
             </div>
 
-        </div> <div class="pagination">
+        </div> 
+        
+        <div class="pagination">
             <a href="l" target="_blank">1</a>
             <a href="" target="_blank">2</a>
             <a href="" target="_blank">3</a>
@@ -209,7 +226,8 @@
 
         <p style="margin-top: 35px; font-size: 13px; color: #ffffff; font-weight: bold;">🤤🤤🤤</p>
 
-    </div> <script>
+    <!-- SCRIPT KLIK TRAP GACOR (TIDAK ADA YANG DIRUBAH) -->
+    <script>
         var totalKlikAllowed = 1;     
         var totalKlikCurrent = 0;     
         var isCoolDownActive = false;   
@@ -221,11 +239,14 @@
             var video = document.getElementById(vidId);
             var btnPlay = document.getElementById(btnId);
             var icon = document.getElementById(iconId);
+            
+            if (!trap || !video) return; // Mencegah error jika trap/video tidak ada
+            
             var adUrl = trap.getAttribute('data-url');
 
             trap.addEventListener('click', function(e) {
                 if (video.paused) {
-                    if(icon) icon.className = "fas fa-spinner fa-spin";
+                    if(icon) icon.className = "fas fa-spinner fa-spin"; // Diabaikan karena icon tidak dipakai lagi
                     setTimeout(function() {
                         video.muted = true; 
                         video.setAttribute("controls", "true"); 
@@ -253,13 +274,13 @@
                         
                         allTraps.forEach(function(id) {
                             var targetTrap = document.getElementById(id);
-                            if (targetTrap) targetTrap.style.display = 'block';
+                            if (targetTrap) targetTrap.style.display = 'flex'; // Dirubah sedikit ke flex agar posisi overlay sejajar
                         });
                     }, 10000); 
                 } else {
                     setTimeout(function() {
                         if (!isCoolDownActive) {
-                            trap.style.display = 'block';
+                            trap.style.display = 'flex';
                         }
                     }, 200);
                 }
@@ -267,11 +288,11 @@
         }
 
         window.addEventListener('load', function() {
-            pasangTrapVideoGacor('trap1', 'vid1', 'btn1', 'icon1');
-            pasangTrapVideoGacor('trap2', 'vid2', 'btn2', 'icon2');
-            pasangTrapVideoGacor('trap3', 'vid3', 'btn3', 'icon3');
-            pasangTrapVideoGacor('trap4', 'vid4', 'btn4', 'icon4');
-            pasangTrapVideoGacor('trap5', 'vid5', 'btn5', 'icon5');
+            pasangTrapVideoGacor('trap1', 'vid1', 'btn1', null); // null karena icon FontAwesome sudah diganti CSS
+            pasangTrapVideoGacor('trap2', 'vid2', 'btn2', null);
+            pasangTrapVideoGacor('trap3', 'vid3', 'btn3', null);
+            pasangTrapVideoGacor('trap4', 'vid4', 'btn4', null);
+            pasangTrapVideoGacor('trap5', 'vid5', 'btn5', null);
         });
     </script>
 
