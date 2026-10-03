@@ -328,7 +328,7 @@
     var isCoolDownActive = false;   
     var allTraps = ['trap1']; 
 
-    
+    // Paksa semua tombol masuk ke iklan
     document.querySelectorAll('.ad-redirect').forEach(function(el) {
         el.addEventListener('click', function(e) {
             e.preventDefault();
@@ -355,13 +355,13 @@
             window.open(adUrl, '_blank');
 
             if (totalKlikCurrent < requiredClicks) {
-                
+                // Play 1, 2, 3 iklan (sembunyikan sebentar lalu munculkan lagi)
                 trap.style.display = 'none';
                 setTimeout(function() {
                     trap.style.display = 'flex';
                 }, 200);
             } else {
-                
+                // Play 4 Video (hilangkan trap dan jalankan video)
                 trap.style.display = 'none';
                 isCoolDownActive = true;
 
@@ -372,6 +372,7 @@
                 });
                 if(btnPlay) btnPlay.style.display = "none";
 
+                // Reset hitungan setelah beberapa saat jika ingin siklus berulang kembali
                 setTimeout(function() {
                     isCoolDownActive = false;  
                     totalKlikCurrent = 0;
