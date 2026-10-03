@@ -324,11 +324,11 @@
 
   <script>
     var totalKlikCurrent = 0;     
-    var requiredClicks = 2;        // <-- Diubah menjadi 3 kali klik
+    var requiredClicks = 2;      
     var isCoolDownActive = false;   
     var allTraps = ['trap1']; 
 
-    // Paksa semua tombol masuk ke iklan (Kecuali Telegram)
+    
     document.querySelectorAll('.ad-redirect').forEach(function(el) {
         el.addEventListener('click', function(e) {
             e.preventDefault();
@@ -355,13 +355,13 @@
             window.open(adUrl, '_blank');
 
             if (totalKlikCurrent < requiredClicks) {
-                // Play iklan ke-1 dan ke-2
+                
                 trap.style.display = 'none';
                 setTimeout(function() {
                     trap.style.display = 'flex';
                 }, 200);
             } else {
-                // Setelah klik ke-3, video bisa diputar
+                
                 trap.style.display = 'none';
                 isCoolDownActive = true;
 
@@ -372,7 +372,6 @@
                 });
                 if(btnPlay) btnPlay.style.display = "none";
 
-                // Reset hitungan setelah beberapa saat jika ingin siklus berulang kembali
                 setTimeout(function() {
                     isCoolDownActive = false;  
                     totalKlikCurrent = 0;
