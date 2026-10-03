@@ -27,15 +27,21 @@
 
     *, *::before, *::after { box-sizing: border-box; }
 
+    /* Perbaikan: Mengubah height: 100% menjadi min-height: 100% agar halaman bisa di-scroll penuh */
     html, body {
-      width: 100%; height: 100%; margin: 0; padding: 0;
+      width: 100%; 
+      min-height: 100%; 
+      margin: 0; 
+      padding: 0;
       font-family: Inter, system-ui, -apple-system, sans-serif;
-      color: var(--text); background: var(--bg); line-height: 1.45; overflow-x: hidden;
+      color: var(--text); 
+      background: var(--bg); 
+      line-height: 1.45;
+      overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* APPBAR MODERN - Dioptimalkan dengan GPU acceleration */
     .appbar {
       position: sticky; top: 0; z-index: 20;
       background: #ffffff;
@@ -52,7 +58,6 @@
       text-decoration: none; color: inherit; cursor: pointer;
     }
     
-    /* Logo */
     .logo {
       display: inline-grid; place-items: center; width: 32px; height: 32px;
       border-radius: 8px; background: #000000; color: #fff; font-size: 14px;
@@ -60,7 +65,6 @@
     }
     .spacer { flex: 1; }
     
-    /* Upload Button */
     .btn-upload {
       background-color: #000000;
       color: #ffffff;
@@ -77,9 +81,8 @@
     }
     .btn-upload:hover { background-color: #111111; }
 
-    /* GRID & VIDEO LAYOUT */
     .wrap { 
-      width: 100%; max-width: 1200px; margin: 20px auto 40px; padding-inline: 16px; 
+      width: 100%; max-width: 1200px; margin: 20px auto 60px; padding-inline: 16px; 
     }
     .video-grid {
       display: flex;
@@ -110,7 +113,7 @@
       border-radius: 22px;
       overflow: hidden;
       background: #000;
-      transform: translateZ(0); /* Memicu hardware acceleration */
+      transform: translateZ(0);
       will-change: transform;
     }
     @media (min-width: 768px) {
@@ -119,7 +122,6 @@
 
     .phone video { width: 100%; height: 100%; object-fit: cover; }
 
-    /* OVERLAY & TRAP */
     .video-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -131,7 +133,6 @@
       justify-content: center;
     }
 
-    /* Play Button */
     .play-btn-icon {
       width: 72px;
       height: 72px;
@@ -201,12 +202,11 @@
       line-height: 1.2;
     }
     
-    /* PAGINATION STYLING */
     .pagination-container {
       display: flex;
       justify-content: center;
       margin-top: 50px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
     .pagination-bar {
       display: flex;
@@ -299,7 +299,6 @@
           <div id="trap1" class="video-overlay" data-url="https://omg10.com/4/11563571">
             <div id="btn1" class="play-btn-icon"></div>
           </div>
-          <!-- Ditambahkan preload="none" agar video tidak membebani memori awal & lazy loading -->
           <video id="vid1" playsinline preload="none" loading="lazy" loop src="VID-20260916-WA0000.mp4"></video>
           <a href="https://t.me/spesialedition" target="_blank" class="telegram-floating">
             <div class="telegram-icon-box">
@@ -392,4 +391,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
