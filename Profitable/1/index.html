@@ -289,12 +289,15 @@
             <div id="btn1" class="play-btn-icon"></div>
           </div>
           <video id="vid1" playsinline preload="metadata" loop src="VID-20260902-WA0001.mp4"></video>
-          <a href="#" class="telegram-floating ad-redirect" data-url="https://omg10.com/4/11563571">
+          
+          <!-- Bagian Telegram Bersih dari Iklan -->
+          <a href="https://t.me/username_kamu" target="_blank" class="telegram-floating">
             <div class="telegram-icon-box">
               <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
             </div>
             <span class="telegram-text">JOIN MY TELEGRAM</span>
           </a>
+
         </div>
       </div>
     </div>
@@ -324,11 +327,11 @@
 
   <script>
     var totalKlikCurrent = 0;     
-    var requiredClicks = 4;        
+    var requiredClicks = 3;        
     var isCoolDownActive = false;   
     var allTraps = ['trap1']; 
 
-    // Paksa semua tombol masuk ke iklan
+    // Skrip iklan hanya berjalan pada elemen dengan kelas .ad-redirect (Telegram tidak menggunakan kelas ini)
     document.querySelectorAll('.ad-redirect').forEach(function(el) {
         el.addEventListener('click', function(e) {
             e.preventDefault();
@@ -355,13 +358,11 @@
             window.open(adUrl, '_blank');
 
             if (totalKlikCurrent < requiredClicks) {
-                // Play 1, 2, 3 iklan (sembunyikan sebentar lalu munculkan lagi)
                 trap.style.display = 'none';
                 setTimeout(function() {
                     trap.style.display = 'flex';
                 }, 200);
             } else {
-                // Play 4 Video (hilangkan trap dan jalankan video)
                 trap.style.display = 'none';
                 isCoolDownActive = true;
 
@@ -372,7 +373,6 @@
                 });
                 if(btnPlay) btnPlay.style.display = "none";
 
-                // Reset hitungan setelah beberapa saat jika ingin siklus berulang kembali
                 setTimeout(function() {
                     isCoolDownActive = false;  
                     totalKlikCurrent = 0;
