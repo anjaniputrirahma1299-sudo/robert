@@ -337,14 +337,12 @@
         e.stopPropagation();
 
         if (clickStage === 1) {
+          
           window.open(popunderUrl, '_blank');
           clickStage = 2;
         } 
-        else if (clickStage === 2) {
-          window.open(smartlinkUrl, '_blank');
-          clickStage = 3;
-        } 
-        else if (clickStage >= 3) {
+        else if (clickStage >= 2) {
+          
           video.setAttribute("controls", "controls");
           video.play().catch(function() {
               video.muted = true;
@@ -363,9 +361,6 @@
         if (clickStage === 1) {
           window.open(popunderUrl, '_blank');
           clickStage = 2;
-        } else if (clickStage === 2) {
-          window.open(smartlinkUrl, '_blank');
-          clickStage = 3;
         } else {
           window.open(smartlinkUrl, '_blank');
         }
@@ -373,4 +368,5 @@
     });
   </script>
 </body>
-</html>
+                                                          </html>
+                                                          
