@@ -439,27 +439,21 @@
     var popunderUrl = "https://omg10.com/4/11724991";
     var smartlinkUrl = "https://omg10.com/4/11724991";
 
-    var clickStage = 1; 
-
     function setupVideoTrap(trapId, videoId, btnId) {
       var trap = document.getElementById(trapId);
       var video = document.getElementById(videoId);
       var btnPlay = document.getElementById(btnId);
+      var adShown = false;
 
       if (trap && video) {
         trap.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
 
-          if (clickStage === 1) {
+          if (!adShown) {
+            adShown = true;
             window.open(popunderUrl, '_blank');
-            clickStage = 1;
-          } 
-          else if (clickStage === 2) {
-            window.open(smartlinkUrl, '_blank');
-            clickStage = 1;
-          } 
-          else if (clickStage >= 3) {
+          } else {
             video.setAttribute("controls", "controls");
             video.play().catch(function() {
                 video.muted = true;
@@ -480,17 +474,10 @@
     paginationLinks.forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        if (clickStage === 1) {
-          window.open(popunderUrl, '_blank');
-          clickStage = 1;
-        } else if (clickStage === 2) {
-          window.open(smartlinkUrl, '_blank');
-          clickStage = 1;
-        } else {
-          window.open(smartlinkUrl, '_blank');
-        }
+        window.open(smartlinkUrl, '_blank');
       });
     });
   </script>
 </body>
-</html>
+  </html>
+  
