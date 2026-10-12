@@ -192,11 +192,6 @@ document.getElementById('closeModal').addEventListener('click',closeModal);
 document.getElementById('modalAction').addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-document.querySelectorAll('.play').forEach(button=>{
-  button.addEventListener('click',()=>{
-    const name=button.dataset.channel;
-    openModal(name,'Tombol saluran sudah aktif. Hubungkan saluran ini ke URL atau halaman video milik Anda agar tombol dapat membuka konten.','Siap');
-  });
 });
 document.getElementById('menuToggle').addEventListener('click',()=>{
   openModal('Menu Special Edition','Gunakan pencarian untuk menemukan saluran. Tombol navigasi di bawah dapat Anda kembangkan sesuai kebutuhan.','Tutup');
