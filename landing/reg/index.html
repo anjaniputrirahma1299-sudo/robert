@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>spesial edition</title>
+<meta property="og:url" content="https://vjjdeyracduk.my.id">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#050816;color:#fff;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 20%,rgba(0,229,255,.22),transparent 30%),radial-gradient(circle at 85% 35%,rgba(117,0,255,.22),transparent 32%),radial-gradient(circle at 50% 90%,rgba(0,255,170,.12),transparent 35%);pointer-events:none;z-index:-1}
+.container{width:min(100%,820px);margin:auto;padding:16px 14px 40px}
+.topbar{height:65px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.logo{font-size:29px;font-weight:900;letter-spacing:-1.5px;animation:logoGlow 2.5s ease-in-out infinite alternate}
+.logo span{background:linear-gradient(90deg,#00e5ff,#8b5cf6);-webkit-background-clip:text;color:transparent}
+.top-icons{font-size:30px;display:flex;gap:18px}
+.section-title{font-size:25px;font-weight:900;margin:34px 4px 16px}
+.section-title span{background:linear-gradient(90deg,#00e5ff,#8b5cf6);-webkit-background-clip:text;color:transparent}
+.channels{display:flex;flex-direction:column;gap:12px}
+.channel{display:flex;align-items:center;gap:14px;padding:11px;border-radius:22px;background:linear-gradient(100deg,rgba(11,30,53,.97),rgba(20,14,43,.97));border:1px solid rgba(0,229,255,.28);cursor:pointer;transition:.2s;opacity:0;transform:translateX(-30px);animation:channelIn .7s ease forwards}
+.channel:hover{transform:translateY(-2px);border-color:#00e5ff;box-shadow:0 0 22px rgba(0,229,255,.22)}
+.channel:nth-child(1){animation-delay:.1s}.channel:nth-child(2){animation-delay:.25s}.channel:nth-child(3){animation-delay:.4s}.channel:nth-child(4){animation-delay:.55s}.channel:nth-child(5){animation-delay:.7s}.channel:nth-child(6){animation-delay:.85s}.channel:nth-child(7){animation-delay:1s}.channel:nth-child(8){animation-delay:1.15s}
+.thumb{width:105px;height:78px;border-radius:16px;display:grid;place-items:center;font-size:38px;background:linear-gradient(135deg,#00c6ff,#6d28d9);flex:none;animation:thumbFloat 3s ease-in-out infinite alternate}
+.channel:nth-child(2) .thumb{background:linear-gradient(135deg,#00f5d4,#0077b6)}
+.channel:nth-child(3) .thumb{background:linear-gradient(135deg,#2563eb,#7c3aed)}
+.channel:nth-child(4) .thumb{background:linear-gradient(135deg,#a855f7,#2563eb)}
+.channel:nth-child(5) .thumb{background:linear-gradient(135deg,#facc15,#ea580c)}
+.channel:nth-child(6) .thumb{background:linear-gradient(135deg,#00e5ff,#047857)}
+.channel:nth-child(7) .thumb{background:linear-gradient(135deg,#34d399,#2563eb)}
+.channel:nth-child(8) .thumb{background:linear-gradient(135deg,#a78bfa,#06b6d4)}
+.channel-info{flex:1;min-width:0}
+.channel-info h3{font-size:19px;margin-bottom:12px}
+.line{height:4px;width:105px;border-radius:5px;background:linear-gradient(90deg,#00e5ff,#8b5cf6);position:relative;overflow:hidden}
+.line:after{content:"";position:absolute;left:-60px;top:0;width:55px;height:100%;background:rgba(255,255,255,.8);transform:skewX(-25deg);animation:lineShine 2.2s infinite}
+.play{width:72px;height:72px;border-radius:50%;border:2px solid #00e5ff;background:rgba(5,12,30,.82);color:#fff;font-size:31px;cursor:pointer;display:grid;place-items:center;padding-left:5px;box-shadow:0 0 25px rgba(0,229,255,.42);transition:.2s;animation:playPulse 1.8s ease-in-out infinite}
+.play:hover{transform:scale(1.08);background:#2563eb;animation:none}
+.small-play{width:48px;height:48px;font-size:20px;flex:none}
+.arrow{font-size:30px;color:#b9d9ff;animation:arrowMove 1.2s ease-in-out infinite alternate}
+.next{margin:25px auto 0;display:block;padding:13px 34px;border-radius:30px;background:transparent;color:#fff;border:2px solid #00e5ff;font-size:16px;font-weight:800;cursor:pointer;animation:nextGlow 2.3s ease-in-out infinite alternate}
+.telegram{margin:14px auto 0;display:flex;align-items:center;justify-content:center;gap:10px;width:min(100%,300px);padding:14px 22px;border-radius:30px;background:linear-gradient(100deg,#229ed9,#1769aa);color:#fff;border:1px solid rgba(255,255,255,.55);font-size:16px;font-weight:800;text-decoration:none;box-shadow:0 0 20px rgba(34,158,217,.38);transition:.2s}
+.telegram:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(34,158,217,.65)}
+.telegram svg{width:22px;height:22px;fill:currentColor}
+html{scroll-behavior:smooth}
+body:before{animation:bgPulse 7s ease-in-out infinite alternate}
+body:after{content:"";position:fixed;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.22),transparent 68%);left:-100px;top:35%;pointer-events:none;z-index:-1;animation:lightMove 9s linear infinite}
+@keyframes bgPulse{0%{transform:scale(1);opacity:.65}100%{transform:scale(1.12);opacity:1}}
+@keyframes lightMove{0%{left:-120px;top:25%}50%{left:75%;top:55%}100%{left:-120px;top:80%}}
+@keyframes logoGlow{from{filter:drop-shadow(0 0 0 rgba(0,229,255,0))}to{filter:drop-shadow(0 0 12px rgba(0,229,255,.55))}}
+@keyframes channelIn{to{opacity:1;transform:translateX(0)}}
+@keyframes thumbFloat{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes lineShine{0%{left:-60px}55%,100%{left:130%}}
+@keyframes playPulse{0%,100%{box-shadow:0 0 18px rgba(0,229,255,.35)}50%{box-shadow:0 0 35px rgba(139,92,246,.8)}}
+@keyframes arrowMove{from{transform:translateX(0)}to{transform:translateX(5px)}}
+@keyframes nextGlow{from{box-shadow:0 0 8px rgba(0,229,255,.18)}to{box-shadow:0 0 24px rgba(139,92,246,.48)}}
+.spark{position:fixed;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 10px #00e5ff;pointer-events:none;z-index:0;opacity:.7;animation:starFloat linear infinite}
+@keyframes starFloat{from{transform:translateY(105vh) scale(.5);opacity:0}15%{opacity:.8}85%{opacity:.8}to{transform:translateY(-10vh) scale(1.2);opacity:0}}
+@media(max-width:500px){.logo{font-size:25px}.thumb{width:92px;height:70px}.channel-info h3{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="topbar">
+    <div class="logo">▶ SPESIAL <span>EDITION</span></div>
+    <div class="top-icons">⌕ ☰</div>
+  </header>
 
+  <h2 class="section-title">▣ &nbsp; PILIH <span>CHANEL</span></h2>
+
+  <div class="channels">
+    <div class="channel smartlink" data-smartlink="https://vjjdeyracduk.my.id/Golden">
+      <div class="thumb">🎞️</div><div class="channel-info"><h3>KAK HENI APEMNYA PINK BANGET</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://uplcm.com/4/10416869">
+      <div class="thumb">🎬</div><div class="channel-info"><h3>KAK SINTA ASETNYA ISTIMEWA</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://vjjdeyracduk.my.id/Golden/1">
+      <div class="thumb">🎞️</div><div class="channel-info"><h3>CHIKA ESEMAH GEMAR BEROLAHRAGA</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://uplcm.com/4/10416869">
+      <div class="thumb">★</div><div class="channel-info"><h3>TALENT FANNY SUKA SINGKONG AYANG</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://vjjdeyracduk.my.id/Golden/2">
+      <div class="thumb">📹</div><div class="channel-info"><h3>DEK LAURA UPDATE KARYA BARU LAGI</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://uplcm.com/4/10416869">
+      <div class="thumb">🎥</div><div class="channel-info"><h3>CHINDO KACAMATA KENA CRT DI MUKA</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://vjjdeyracduk.my.id/Golden/3">
+      <div class="thumb">🍿</div><div class="channel-info"><h3>NAVISA MASIH POLOS NYABAIN OMX</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+    <div class="channel smartlink" data-smartlink="https://uplcm.com/4/10416869">
+      <div class="thumb">⭐</div><div class="channel-info"><h3>HIJAB HITAM TEMBEM ATAS BAWAH</h3><div class="line"></div></div><button class="play small-play" aria-label="Play">▶</button><div class="arrow">›</div>
+    </div>
+  </div>
+
+  <button class="next smartlink" data-smartlink="https://uplcm.com/4/10416869">BERIKUTNYA &nbsp; →</button>
+  <a class="telegram" id="telegramButton" href="https://t.me/USERNAME_TELEGRAM" target="_blank" rel="noopener noreferrer" aria-label="Buka Telegram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 4.3 18.5 20c-.2 1.1-.8 1.4-1.7.9l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L5.9 14.1l-4.6-1.4c-1-.3-1-1 .2-1.5L19.4 3.8c.9-.3 2.6.2 2.3.5Z"/></svg>
+    <span>BUKA TELEGRAM</span>
+  </a>
+</div>
+<script>
+document.querySelectorAll(".smartlink").forEach(element => {
+  element.addEventListener("click", function(e) {
+    e.preventDefault();
+    const url = this.dataset.smartlink;
+    if (!url || url.includes("YOUR-SMARTLINK")) {
+      alert("Smartlink belum diisi.");
+      return;
+    }
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+});
+(function(){
+  const count = 18;
+  for(let i=0;i<count;i++){
+    const s=document.createElement("span");
+    s.className="spark";
+    s.style.left=(Math.random()*100)+"%";
+    s.style.animationDuration=(5+Math.random()*8)+"s";
+    s.style.animationDelay=(-Math.random()*10)+"s";
+    s.style.opacity=(.25+Math.random()*.65);
+    s.style.transform="scale("+(0.5+Math.random()*1.2)+")";
+    document.body.appendChild(s);
+  }
+})();
+
+/* Ganti USERNAME_TELEGRAM dengan username/channel Telegram Anda. */
+const telegramButton = document.getElementById("telegramButton");
+telegramButton.addEventListener("click", function(e) {
+  const url = this.href;
+  if (url.includes("USERNAME_TELEGRAM")) {
+    e.preventDefault();
+    alert("Ganti USERNAME_TELEGRAM pada href tombol Telegram dengan username atau tautan Telegram Anda.");
+  }
+});
+</script>
+</body>
+</html>
