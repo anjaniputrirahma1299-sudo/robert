@@ -241,31 +241,45 @@
       border-radius: 4px;
       background: #4ade80;
     }
-    .telegram-container {
-       display: flex;
-justify-content: center;
-margin-top: 16px;
-width: 100%;
+.telegram-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .btn-telegram {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 10px 24px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  display: inline-flex;
+  width: 100%;
+  min-height: 76px;
+  padding: 18px 24px;
+  box-sizing: border-box;
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  border: 1.5px solid #22c55e;
-  transition: background-color 0.2s ease;
+  gap: 12px;
+
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #22c55e;
+  border-radius: 999px;
+
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 1px;
+
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.25);
+  transition: background 0.2s ease;
 }
 
 .btn-telegram:hover {
-  background-color: #111111;
+  background: #111111;
+}
+
+.btn-telegram i {
+  font-size: 24px;
 }
   </style>
   <script>(function(s){s.dataset.zone='11724989',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
