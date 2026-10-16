@@ -68,6 +68,27 @@
     }
     .btn-upload:hover { background-color: #111111; }
 
+    /* Style untuk tombol Telegram (disamakan dengan tombol upload/lainnya) */
+    .btn-telegram {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1.5px solid #22c55e;
+      transition: background-color 0.2s ease;
+      margin-top: 15px;
+      width: 100%;
+      max-width: clamp(240px, 92vw, 360px);
+    }
+    .btn-telegram:hover { background-color: #111111; }
+
     .wrap { 
       width: 100%; max-width: 1200px; margin: 20px auto 60px; padding-inline: 16px; 
     }
@@ -244,6 +265,11 @@
             <div id="btn1" class="play-btn-icon"></div>
           </div>
           <video id="vid1" playsinline preload="metadata" loop src="VID-20260919-WA0000.mp4"></video>
+        </div>
+        <!-- Tombol Telegram yang ditambahkan di bawah video dengan class ad-redirect agar tetap mengikuti alur script iklan Anda -->
+        <a href="#" class="https://t.me/Asupanviralbernutrisi">
+          <i class="fab fa-telegram-plane"></i> BUKA TELEGRAM
+        </a>
       </div>
     </div>
   </main>
@@ -294,5 +320,4 @@
     });
   </script>
 </body>
-                                                          </html>
-                                                          
+</html>
