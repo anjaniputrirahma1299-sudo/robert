@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TontonPlus - Nonton Tanpa Batas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
 
+<style>
+/* =====================================================
+   WARNA - ubah di sini kalau mau ganti tema
+   ===================================================== */
+:root{
+  --bg:#070516;
+  --card:#120e38;
+  --cyan:#22e4ff;
+  --blue:#3b6bff;
+  --violet:#8b4dff;
+  --pink:#ff3ea5;
+  --text:#f1f0ff;
+  --muted:#b3b0e0;
+  --line:rgba(139,77,255,.4);
+  --grad:linear-gradient(135deg,var(--cyan),var(--blue) 40%,var(--violet) 70%,var(--pink));
+  --H:100vh;
+}
+@supports (height:100dvh){:root{--H:100dvh}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:'Outfit',system-ui,sans-serif;color:var(--text);line-height:1.3}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+.bg-glow{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-glow::before,.bg-glow::after{content:"";position:absolute;width:80vmax;height:80vmax;border-radius:50%;filter:blur(110px);opacity:.5}
+.bg-glow::before{background:radial-gradient(circle,var(--violet),transparent 65%);top:-30vmax;left:-25vmax}
+.bg-glow::after{background:radial-gradient(circle,var(--blue),transparent 65%);bottom:-30vmax;right:-25vmax}
+
+/* ===== Satu layar penuh, tanpa scroll =====
+   --u = 1% dari lebar tampilan. Semua ukuran mengikuti --u
+   sehingga seluruh halaman otomatis mengecil agar muat. */
+.app{
+  --u:calc(min(100vw, var(--H) * .6667) / 100);
+  width:min(100vw, calc(var(--H) * .6667));
+  height:var(--H);
+  margin:0 auto;
+  padding:0 calc(var(--u)*3) calc(var(--u)*1.5);
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+}
+
+/* ===== HEADER ===== */
+header{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u)*1.5);height:calc(var(--u)*10);flex:none}
+.logo{display:flex;align-items:center;gap:calc(var(--u)*1.2);flex:none}
+.logo-mark{width:calc(var(--u)*6.5);height:calc(var(--u)*6.5);border-radius:28%;background:var(--grad);display:grid;place-items:center;box-shadow:0 0 18px rgba(139,77,255,.6)}
+.logo-mark svg{width:42%;fill:#fff;margin-left:8%}
+.logo b{display:block;font-family:'Unbounded',sans-serif;font-size:max(13px,calc(var(--u)*3.6));letter-spacing:-.04em;line-height:1}
+.logo b span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo small{display:block;font-size:max(6px,calc(var(--u)*1.05));letter-spacing:.2em;color:var(--cyan);margin-top:calc(var(--u)*.5)}
+.menu{display:flex;align-items:center;border:1px solid var(--blue);border-radius:999px;background:rgba(18,14,56,.6);padding:calc(var(--u)*.4);min-width:0}
+.menu a{padding:calc(var(--u)*1.3) calc(var(--u)*1.9);border-radius:999px;font-size:max(8.5px,calc(var(--u)*1.55));font-weight:500;color:var(--muted);white-space:nowrap}
+.menu a.active{color:#fff;background:linear-gradient(135deg,rgba(59,107,255,.55),rgba(139,77,255,.45));box-shadow:inset 0 0 0 1px var(--blue)}
+.burger{flex:none;width:calc(var(--u)*4.5);display:grid;gap:calc(var(--u)*.8)}
+.burger span{display:block;height:max(2px,calc(var(--u)*.55));border-radius:3px;background:#fff}
+
+/* ===== HERO ===== */
+.hero{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:space-around;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:calc(var(--u)*1.2);padding:calc(var(--u)*1) calc(var(--u)*3);border-radius:999px;border:1px solid var(--cyan);background:rgba(34,228,255,.08);font-size:max(10px,calc(var(--u)*2.1));font-weight:500}
+.badge i{width:calc(var(--u)*1.6);height:calc(var(--u)*1.6);border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:max(24px,calc(var(--u)*8));line-height:1.08;letter-spacing:-.05em}
+h1 .l2{display:block;font-size:1.18em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(139,77,255,.55))}
+
+/* PLAY TENGAH */
+.play{position:relative;display:grid;place-items:center;width:calc(var(--u)*21);height:calc(var(--u)*21);border-radius:50%;background:radial-gradient(circle at 30% 25%,#2a1d7a,#0b0826 70%);box-shadow:0 0 40px rgba(139,77,255,.7),inset 0 0 24px rgba(34,228,255,.25);transition:transform .25s}
+.play::before{content:"";position:absolute;inset:-3px;border-radius:50%;padding:3px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.play::after{content:"";position:absolute;inset:calc(var(--u)*-1.8);border-radius:50%;border:2px solid var(--violet);opacity:.5;animation:ring 2.4s ease-out infinite}
+.play svg{width:40%;fill:#fff;margin-left:7%;filter:drop-shadow(0 0 10px rgba(255,255,255,.7))}
+.play:hover{transform:scale(1.06)}
+@keyframes ring{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+
+/* TOMBOL */
+.cta{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*1.6);width:100%}
+.btn-tg{display:flex;align-items:center;gap:calc(var(--u)*1.8);width:56%;min-width:230px;padding:calc(var(--u)*1.4) calc(var(--u)*2.6);border-radius:999px;background:linear-gradient(90deg,#1aa3ff,#6a4dff 55%,#c23bff);box-shadow:0 8px 28px rgba(106,77,255,.55);text-align:left;transition:.25s}
+.btn-tg:hover{transform:translateY(-2px)}
+.btn-tg .ic{width:calc(var(--u)*4.4);height:calc(var(--u)*4.4);fill:#fff;flex:none}
+.btn-tg b{display:block;font-size:max(13px,calc(var(--u)*2.6));line-height:1.15}
+.btn-tg small{font-size:max(9px,calc(var(--u)*1.6))}
+.btn-tg .arr{margin-left:auto;width:calc(var(--u)*2.6);height:calc(var(--u)*2.6);stroke:#fff;fill:none;stroke-width:2.4;flex:none}
+.btn-ghost{display:inline-flex;align-items:center;gap:calc(var(--u)*1.4);padding:calc(var(--u)*1.2) calc(var(--u)*4);border-radius:999px;border:1.5px solid var(--cyan);background:rgba(34,228,255,.06);font-weight:600;font-size:max(11px,calc(var(--u)*2.1));transition:.25s}
+.btn-ghost:hover{background:rgba(34,228,255,.18)}
+.btn-ghost svg{width:calc(var(--u)*1.8);fill:#fff}
+
+/* ===== FITUR ===== */
+.features{flex:none;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:calc(var(--u)*3);background:rgba(18,14,56,.65);margin:calc(var(--u)*1.5) 0}
+.feat{display:flex;gap:calc(var(--u)*1);align-items:center;padding:calc(var(--u)*1.6) calc(var(--u)*1.2);border-right:1px solid var(--line);min-width:0}
+.feat:last-child{border-right:0}
+.feat .ic{flex:none;width:calc(var(--u)*5.4);height:calc(var(--u)*5.4);border-radius:30%;display:grid;place-items:center;background:linear-gradient(145deg,rgba(59,107,255,.4),rgba(139,77,255,.2));border:1px solid var(--blue)}
+.feat .ic svg{width:55%;height:55%;stroke:var(--cyan);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.feat b{display:block;font-size:max(8.5px,calc(var(--u)*1.55));line-height:1.15}
+.feat span{display:block;font-size:max(7.5px,calc(var(--u)*1.3));color:var(--muted);line-height:1.2;margin-top:2px}
+
+/* ===== KATEGORI ===== */
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u)*1.5);margin-bottom:calc(var(--u)*1.6)}
+.sec-head h2{font-family:'Unbounded',sans-serif;font-size:max(13px,calc(var(--u)*2.7));letter-spacing:-.03em;line-height:1.1}
+.sec-head p{color:var(--muted);font-size:max(8.5px,calc(var(--u)*1.55));margin-top:2px}
+.see-all{flex:none;padding:calc(var(--u)*1) calc(var(--u)*2.6);border-radius:999px;border:1px solid var(--blue);font-size:max(9px,calc(var(--u)*1.55));font-weight:500;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:calc(var(--u)*15.5);gap:calc(var(--u)*1.6)}
+.cat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--u)*1.5);border-radius:calc(var(--u)*2.4);overflow:hidden;background:var(--card);border:1.5px solid var(--c1,var(--blue));isolation:isolate;min-width:0;transition:transform .25s,box-shadow .25s}
+.cat:hover{transform:translateY(-3px);box-shadow:0 8px 26px var(--c2,rgba(139,77,255,.5))}
+.cat .img{position:absolute;inset:0;z-index:-2;background:linear-gradient(150deg,var(--c1),transparent 70%),var(--card);background-size:cover;background-position:center}
+.cat .img.has{background-image:none}
+.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(7,5,22,.92) 10%,rgba(7,5,22,.3) 60%,transparent)}
+.cat .emoji{position:absolute;top:calc(var(--u)*1.4);left:calc(var(--u)*1.5);font-size:calc(var(--u)*5.2);line-height:1;filter:drop-shadow(0 0 10px var(--c1))}
+.cat h3{font-size:max(11px,calc(var(--u)*2.1));font-weight:600;line-height:1.1;padding-right:calc(var(--u)*3)}
+.cat p{font-size:max(8px,calc(var(--u)*1.35));color:#d9d6ff;line-height:1.2;margin-top:2px;padding-right:calc(var(--u)*3.2)}
+.cat .go{position:absolute;right:calc(var(--u)*1);bottom:calc(var(--u)*1.2);width:calc(var(--u)*3.2);height:calc(var(--u)*3.2);border-radius:50%;border:1.5px solid var(--c1);display:grid;place-items:center;background:rgba(7,5,22,.55)}
+.cat .go svg{width:55%;height:55%;stroke:#fff;fill:none;stroke-width:2.6}
+
+footer{flex:none;margin-top:calc(var(--u)*1.5);text-align:center;color:var(--muted);font-size:max(8px,calc(var(--u)*1.45))}
+footer b{color:var(--cyan);font-weight:600}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<div class="app">
+  <header>
+    <a class="logo" href="#">
+      <span class="logo-mark"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+      <span><b>Tonton<span>Plus</span></b><small>NONTON TANPA BATAS</small></span>
+    </a>
+    <nav class="menu">
+      <a class="active" href="#">Beranda</a>
+      <a href="#" data-smartlink>Jelajahi</a>
+      <a href="#" data-smartlink>Langganan</a>
+      <a href="#" data-smartlink>Profil</a>
+    </nav>
+    <a class="burger" href="#" data-smartlink aria-label="Menu"><span></span><span></span><span></span></a>
+  </header>
+
+  <section class="hero">
+    <span class="badge"><i></i>Streaming Tanpa Batas</span>
+    <h1>Tonton Video <span class="l2">Full HD</span></h1>
+
+    <!-- TOMBOL PLAY TENGAH (link dari CONFIG.smartlink) -->
+    <a class="play" href="#" aria-label="Putar video" data-smartlink>
+      <svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>
+    </a>
+
+    <div class="cta">
+      <!-- TOMBOL TELEGRAM (link dari CONFIG.telegram) -->
+      <a class="btn-tg" id="tgBtn" href="#" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M21.9 3.3 2.6 10.7c-1 .4-1 1.1-.2 1.3l4.9 1.5 1.9 5.7c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8L23.2 4.6c.3-1.2-.4-1.7-1.3-1.3zM8.5 13.1l9.7-6.1c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.9-4.6z"/></svg>
+        <span><b>Gabung Telegram</b><small>Dapatkan update terbaru &amp; link smart</small></span>
+        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn-ghost" href="#" data-smartlink>
+        <svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Lanjutkan Menonton
+      </a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7.5 8v5M7.5 10.5h3M10.5 8v5"/></svg></div><div><b>Kualitas HD</b><span>Gambar jernih tanpa buffering.</span></div></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><div><b>Streaming Cepat</b><span>Tanpa lag, langsung nonton.</span></div></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><div><b>Aman &amp; Terpercaya</b><span>Data kamu terlindungi.</span></div></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><rect x="14" y="9" width="8" height="12" rx="1.5"/><path d="M6 18h6"/></svg></div><div><b>Semua Perangkat</b><span>HP, Tablet, Laptop, Smart TV.</span></div></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div>
+        <h2>Jelajahi Kategori</h2>
+        <p>Pilih channel favoritmu dan nikmati tontonan terbaik</p>
+      </div>
+      <a class="see-all" href="#" data-smartlink>Lihat Semua</a>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <footer><b>TontonPlus</b> &nbsp;•&nbsp; Hiburan Tanpa Batas &nbsp;•&nbsp; Temukan Keseruan Setiap Hari</footer>
+</div>
+
+<script>
+/* =====================================================================
+   PENGATURAN - CUKUP EDIT BAGIAN INI SAJA
+   ===================================================================== */
+const CONFIG = {
+
+  // 1) SMARTLINK utama.
+  //    Dipakai oleh: tombol PLAY tengah, "Lanjutkan Menonton",
+  //    menu Jelajahi/Langganan/Profil, dan "Lihat Semua".
+  smartlink: "https://GANTI-SMARTLINK-KAMU.com",
+
+  // 2) LINK TELEGRAM untuk tombol "Gabung Telegram"
+  telegram: "https://t.me/GANTI_USERNAME_KAMU",
+
+  // 3) KATEGORI BAWAH
+  //    image : isi URL gambar (mis. "https://situs.com/film.jpg" atau "img/film.jpg").
+  //            Kosongkan "" kalau mau pakai warna gradasi + emoji.
+  //    link  : smartlink khusus kategori ini.
+  //            Kosongkan "" untuk memakai smartlink utama di atas.
+  categories: [
+    { name:"Film",         desc:"Film terbaru & populer",   emoji:"🎬", image:"", link:"", c1:"#ff3ea5", c2:"rgba(255,62,165,.5)" },
+    { name:"Series",       desc:"Episode lengkap",          emoji:"📺", image:"", link:"", c1:"#22e4ff", c2:"rgba(34,228,255,.45)" },
+    { name:"Drama",        desc:"Drama pilihan terbaik",    emoji:"🎞️", image:"", link:"", c1:"#c23bff", c2:"rgba(194,59,255,.5)" },
+    { name:"Anime",        desc:"Anime sub & dub",          emoji:"⭐", image:"", link:"", c1:"#3b6bff", c2:"rgba(59,107,255,.5)" },
+    { name:"Variety Show", desc:"Hiburan tanpa batas",      emoji:"🎭", image:"", link:"", c1:"#22e4ff", c2:"rgba(34,228,255,.45)" },
+    { name:"Musik",        desc:"Video musik & konser",     emoji:"🎵", image:"", link:"", c1:"#ff3ea5", c2:"rgba(255,62,165,.5)" },
+    { name:"Olahraga",     desc:"Live & highlight",         emoji:"🏆", image:"", link:"", c1:"#22e4ff", c2:"rgba(34,228,255,.45)" },
+    { name:"Lainnya",      desc:"Konten menarik lainnya",   emoji:"👑", image:"", link:"", c1:"#8b4dff", c2:"rgba(139,77,255,.55)" }
+  ],
+
+  // Buka link di tab baru? (true = tab baru, false = tab yang sama)
+  openNewTab: true
+};
+/* ===================== AKHIR PENGATURAN ===================== */
+
+
+/* ---------- Jangan ubah di bawah ini kecuali paham ---------- */
+(function(){
+  function setLink(el, url){
+    el.href = url;
+    el.target = CONFIG.openNewTab ? "_blank" : "_self";
+    el.rel = "noopener";
+  }
+
+  document.querySelectorAll("[data-smartlink]").forEach(el => setLink(el, CONFIG.smartlink));
+  document.getElementById("tgBtn").href = CONFIG.telegram;
+
+  const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const grid = document.getElementById("grid");
+  CONFIG.categories.forEach(cat => {
+    const a = document.createElement("a");
+    a.className = "cat";
+    a.style.setProperty("--c1", cat.c1 || "#3b6bff");
+    a.style.setProperty("--c2", cat.c2 || "rgba(139,77,255,.5)");
+    setLink(a, cat.link || CONFIG.smartlink);
+
+    const img = document.createElement("div");
+    img.className = "img" + (cat.image ? " has" : "");
+    if (cat.image) img.style.backgroundImage = 'url("' + cat.image + '")';
+    a.appendChild(img);
+
+    if (!cat.image) {
+      const em = document.createElement("span");
+      em.className = "emoji";
+      em.textContent = cat.emoji || "";
+      a.appendChild(em);
+    }
+
+    const h = document.createElement("h3"); h.textContent = cat.name;
+    const p = document.createElement("p");  p.textContent = cat.desc;
+    const go = document.createElement("span"); go.className = "go"; go.innerHTML = arrow;
+    a.append(h, p, go);
+    grid.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
