@@ -3,81 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>spesial edition</title>
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vjjdeyracduk.my.id/Profitable">
-
+  <title>RintihanMalam_VIDEOS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  
   <style>
     :root {
       --bg: #ffffff;
       --text: #0f172a;
       --line: #e2e8f0;
-      --purple: #a855f7;
-      --telegram: #229ED9;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
+      width: 100%; 
+      min-height: 100%; 
+      margin: 0; 
       padding: 0;
       font-family: Inter, system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background: var(--bg);
+      color: var(--text); 
+      background: var(--bg); 
       line-height: 1.45;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
       -webkit-font-smoothing: antialiased;
     }
 
     .appbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       background: #ffffff;
       border-bottom: 1px solid var(--line);
+      transform: translateZ(0);
+      will-change: transform;
     }
-
     .bar-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin-inline: auto;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 16px;
+      width: 100%; max-width: 1200px; margin-inline: auto;
+      display: flex; align-items: center; gap: 12px; padding: 10px 16px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      text-decoration: none;
-      color: inherit;
+    .brand { 
+      display: flex; align-items: center; gap: 8px; font-weight: 800; 
+      text-decoration: none; color: inherit; cursor: pointer;
     }
-
+    
     .logo {
-      display: inline-grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #000000;
-      color: #ffffff;
-      font-size: 14px;
-      border: 1.5px solid var(--purple);
+      display: inline-grid; place-items: center; width: 32px; height: 32px;
+      border-radius: 8px; background: #000000; color: #fff; font-size: 14px;
+      border: 1.5px solid #22c55e;
     }
-
-    .spacer {
-      flex: 1;
-    }
-
+    .spacer { flex: 1; }
+    
     .btn-upload {
-      background: #000000;
+      background-color: #000000;
       color: #ffffff;
       padding: 8px 20px;
       border-radius: 12px;
@@ -87,21 +63,27 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--purple);
+      border: 1.5px solid #22c55e;
+      transition: background-color 0.2s ease;
     }
+    .btn-upload:hover { background-color: #111111; }
 
-    .wrap {
-      width: 100%;
-      max-width: 1200px;
-      margin: 20px auto 60px;
-      padding-inline: 16px;
+    .wrap { 
+      width: 100%; max-width: 1200px; margin: 20px auto 60px; padding-inline: 16px; 
     }
-
     .video-grid {
       display: flex;
       flex-direction: column;
       gap: 30px;
       align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px;
+      }
     }
 
     .video-card {
@@ -117,22 +99,22 @@
       aspect-ratio: 9 / 16;
       border-radius: 22px;
       overflow: hidden;
-      background: #000000;
+      background: #000;
       transform: translateZ(0);
+      will-change: transform;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.15);
+    }
+    @media (min-width: 768px) {
+      .phone { width: 100%; }
     }
 
-    .phone video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .phone video { width: 100%; height: 100%; object-fit: cover; }
 
     .video-overlay {
       position: absolute;
-      inset: 0;
-      z-index: 5;
-      background: rgba(0, 0, 0, 0.3);
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 99;
+      background: rgba(0,0,0,0.3);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -147,125 +129,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--purple);
+      position: relative;
+      border: 2px solid #22c55e;
+      transition: transform 0.2s ease;
     }
-
+    .play-btn-icon:hover { transform: scale(1.08); }
     .play-btn-icon::before {
       content: "";
       display: block;
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       margin-left: 4px;
       border-top: 12px solid transparent;
       border-bottom: 12px solid transparent;
       border-left: 20px solid #ffffff;
+      z-index: 2;
     }
 
-    /* Tombol Telegram pertama */
-    .telegram-button {
-      width: 100%;
-      max-width: 360px;
-      min-height: 48px;
-      margin-top: 12px;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--telegram);
-      color: #ffffff;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 800;
-      text-decoration: none;
-      letter-spacing: 0.4px;
-      transition: transform 0.2s ease;
-    }
-
-    .telegram-button:hover {
-      transform: translateY(-2px);
-    }
-
-    .telegram-button svg {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
-    }
-
-    /* Tombol BUKA TELEGRAM kedua */
-    .telegram-button-bottom {
-      width: 100%;
-      max-width: 360px;
-      min-height: 66px;
-      margin-top: 12px;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      background: #000000;
-      color: #ffffff;
-      border: 2px solid var(--purple);
-      border-radius: 999px;
-      font-size: 20px;
-      font-weight: 800;
-      text-decoration: none;
-      text-align: center;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
-      transition: transform 0.2s ease;
-    }
-
-    .telegram-button-bottom:hover {
-      transform: scale(1.02);
-    }
-
-    .telegram-button-bottom svg {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-    }
-      /* JUDUL DI ANTARA VIDEO */
-      .video-title {
-       width: 100%;
-       padding: 0 8px;
-       margin: 24px 0;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       gap: 10px;
-       text-align: center;
-   }
-
-       .video-title h2 {
-        margin: 0;
-        color: #ffffff;
-        font-size: 16px;
-       font-weight: 900;
-       letter-spacing: 1px;
-       line-height: 1.4;
-        text-shadow:
-        0 0 5px #a855f7,
-        0 0 12px #a855f7;
-   }
-
-      .video-title .title-line {
-       width: 22px;
-       height: 2px;
-       flex-shrink: 0;
-       background: #a855f7;
-       border-radius: 10px;
-        box-shadow: 0 0 8px #a855f7;
-  }
-
-    /* Pagination */
+    
     .pagination-container {
       display: flex;
       justify-content: center;
       margin-top: 50px;
       margin-bottom: 40px;
     }
-
     .pagination-bar {
       display: flex;
       align-items: center;
@@ -273,27 +159,26 @@
       background: #000000;
       padding: 10px 18px;
       border-radius: 9999px;
-      border: 1.5px solid var(--purple);
+      position: relative;
+      border: 1.5px solid #22c55e;
     }
-
     .pagination-btn {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       background: #000000;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
       text-decoration: none;
-      border: 1.5px solid var(--purple);
+      border: 1.5px solid #22c55e;
       transition: transform 0.2s;
     }
-
     .pagination-btn:hover {
       transform: scale(1.08);
     }
-
     .pagination-center {
       display: flex;
       flex-direction: column;
@@ -301,10 +186,10 @@
       padding: 8px 28px;
       background: #0a0a0a;
       border-radius: 9999px;
+      position: relative;
       min-width: 150px;
-      border: 1px solid rgba(168, 85, 247, 0.6);
+      border: 1px solid rgba(34, 197, 94, 0.6);
     }
-
     .pagination-info {
       display: flex;
       align-items: center;
@@ -312,405 +197,102 @@
       color: #ffffff;
       font-weight: 700;
       font-size: 15px;
+      letter-spacing: 0.5px;
     }
-
     .pagination-info svg {
       width: 18px;
       height: 18px;
       fill: #ffffff;
     }
-
     .pagination-dots {
       display: flex;
       gap: 6px;
       margin-top: 5px;
     }
-
     .dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: #444444;
     }
-
     .dot.active {
       width: 16px;
       border-radius: 4px;
-      background: #d946ef;
-    }
-
-    @media (min-width: 768px) {
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 30px;
-      }
-
-      .phone,
-      .telegram-button,
-      .telegram-button-bottom {
-        width: 100%;
-        max-width: 100%;
-      }
+      background: #4ade80;
     }
   </style>
-
-  <script>
-    (function () {
-      var s = document.createElement('script');
-      s.dataset.zone = '11563270';
-      s.src = 'https://al5sm.com/tag.min.js';
-      document.head.appendChild(s);
-    })();
-  </script>
+  <script>(function(s){s.dataset.zone='11724989',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
-
 <body>
 
   <header class="appbar">
     <div class="bar-inner">
-      <a class="brand ad-redirect"
-         href="#"
-         data-url="https://uplcm.com/4/11563571">
+      <a class="brand ad-redirect" href="#">
         <span class="logo">V</span>
         <span>VIDEY</span>
       </a>
-
       <div class="spacer"></div>
-
-      <a href="#"
-         class="btn-upload ad-redirect"
-         data-url="https://uplcm.com/4/11563571">
-        Upload
-      </a>
+      <a href="#" class="btn-upload ad-redirect">Upload</a>
     </div>
   </header>
 
   <main class="wrap">
-
     <div class="video-grid">
-
-      <!-- VIDEO 1 -->
       <div class="video-card">
-
         <div class="phone">
-
-          <div id="trap1"
-               class="video-overlay"
-               data-url="https://uplcm.com/4/11563571">
+          <div id="trap1" class="video-overlay">
             <div id="btn1" class="play-btn-icon"></div>
           </div>
-
-          <video id="vid1"
-                 playsinline
-                 preload="metadata"
-                 loop
-                 src="VID-20260902-WA0001.mp4">
-          </video>
-
-        </div>
-
-      <!-- JUDUL ANTARA VIDEO 1 DAN 2 -->
-      <div class="video-title">
-        <span class="title-line"></span>
-        <h2>🔥 SPESIAL EDITION PART 02 🔥</h2>
-        <span class="title-line"></span>
-      </div>
-
-      <!-- VIDEO 2 -->
-
-        <!-- TOMBOL TELEGRAM PERTAMA -->
-        <a href="https://t.me/spesialedition"
-           class="telegram-button"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>JOIN MY TELEGRAM</span>
-        </a>
-
-        <!-- TOMBOL TELEGRAM KEDUA -->
-        <a href="https://t.me/spesialedition"
-           class="telegram-button-bottom"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>BUKA TELEGRAM</span>
-        </a>
-
-      </div>
-
-      <!-- VIDEO 2 -->
-      <div class="video-card">
-
-        <div class="phone">
-
-          <div id="trap2"
-               class="video-overlay"
-               data-url="https://uplcm.com/4/11563571">
-            <div id="btn2" class="play-btn-icon"></div>
-          </div>
-
-          <video id="vid2"
-                 playsinline
-                 preload="metadata"
-                 loop
-                 src="VID-20260902-WA0001.mp4">
-          </video>
-
-        </div>
-
-      <!-- JUDUL ANTARA VIDEO 1 DAN 2 -->
-      <div class="video-title">
-        <span class="title-line"></span>
-        <h2>🔥 SPESIAL EDITION PART 02 🔥</h2>
-        <span class="title-line"></span>
-      </div>
-
-      <!-- VIDEO 2 -->
-
-        <a href="https://t.me/spesialedition"
-           class="telegram-button"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>JOIN MY TELEGRAM</span>
-        </a>
-
-        <a href="https://t.me/spesialedition"
-           class="telegram-button-bottom"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>BUKA TELEGRAM</span>
-        </a>
-
-      </div>
-
-      <!-- VIDEO 3 -->
-      <div class="video-card">
-
-        <div class="phone">
-
-          <div id="trap3"
-               class="video-overlay"
-               data-url="https://uplcm.com/4/11563571">
-            <div id="btn3" class="play-btn-icon"></div>
-          </div>
-
-          <video id="vid3"
-                 playsinline
-                 preload="metadata"
-                 loop
-                 src="VID-20260902-WA0001.mp4">
-          </video>
-
-        </div>
-
-      <!-- JUDUL ANTARA VIDEO 1 DAN 2 -->
-      <div class="video-title">
-        <span class="title-line"></span>
-        <h2>🔥 SPESIAL EDITION PART 02 🔥</h2>
-        <span class="title-line"></span>
-      </div>
-
-      <!-- VIDEO 2 -->
-
-        <a href="https://t.me/spesialedition"
-           class="telegram-button"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>JOIN MY TELEGRAM</span>
-        </a>
-
-        <a href="https://t.me/spesialedition"
-           class="telegram-button-bottom"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2c.9-.3 1.6.2 1.2 1.2Z"/>
-          </svg>
-
-          <span>BUKA TELEGRAM</span>
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- PAGINATION -->
-    <div class="pagination-container">
-      <div class="pagination-bar">
-
-        <a href="#"
-           class="pagination-btn ad-redirect"
-           data-url="https://uplcm.com/4/11563571"
-           title="Sebelumnya"
-           aria-label="Sebelumnya">
-
-          <svg width="18" height="18"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="3"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </a>
-
-        <div class="pagination-center">
-
-          <div class="pagination-info">
-            <svg viewBox="0 0 24 24">
-              <path d="M18 4H6C4.9 4 4 4.9 4 6V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V6C20 4.9 19.1 4 18 4ZM11 16H9V14H11V16ZM11 12H9V10H11V12ZM11 8H9V6H11V8ZM15 16H13V14H15V16ZM15 12H13V10H15V12ZM15 8H13V6H15V8Z"/>
-            </svg>
-
-            <span>01 / 03</span>
-          </div>
-
-          <div class="pagination-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-
-        </div>
-
-        <a href="#"
-           class="pagination-btn ad-redirect"
-           data-url="https://uplcm.com/4/11563571"
-           title="Berikutnya"
-           aria-label="Berikutnya">
-
-          <svg width="18" height="18"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="3"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </a>
-
+          <video id="vid1" playsinline preload="metadata" loop src="VID-20260919-WA0000.mp4"></video>
       </div>
     </div>
-
   </main>
 
   <script>
-    var totalKlikCurrent = 0;
-    var requiredClicks = 1;
-    var isCoolDownActive = false;
+    var popunderUrl = "https://omg10.com/4/11724991";
+    var smartlinkUrl = "https://omg10.com/4/11724991";
 
-    function pasangTrapVideoGacor(trapId, vidId, btnId) {
-      var trap = document.getElementById(trapId);
-      var video = document.getElementById(vidId);
-      var btnPlay = document.getElementById(btnId);
+    var clickStage = 1; 
+    var trap = document.getElementById('trap1');
+    var video = document.getElementById('vid1');
+    var btnPlay = document.getElementById('btn1');
 
-      if (!trap || !video) return;
-
-      var adUrl = trap.getAttribute('data-url');
-
+    if (trap && video) {
       trap.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        if (isCoolDownActive) return;
-
-        totalKlikCurrent++;
-
-        if (adUrl) {
-          window.open(adUrl, '_blank', 'noopener');
-        }
-
-        if (totalKlikCurrent < requiredClicks) {
-          trap.style.display = 'none';
-
-          setTimeout(function() {
-            trap.style.display = 'flex';
-          }, 200);
-
-        } else {
-          trap.style.display = 'none';
-          isCoolDownActive = true;
-
-          video.setAttribute('controls', 'controls');
-
+        if (clickStage === 1) {
+          
+          window.open(popunderUrl, '_blank');
+          clickStage = 2;
+        } 
+        else if (clickStage >= 2) {
+          
+          video.setAttribute("controls", "controls");
           video.play().catch(function() {
-            video.muted = true;
-            video.play().catch(function() {});
+              video.muted = true;
+              video.play();
           });
-
-          if (btnPlay) {
-            btnPlay.style.display = 'none';
-          }
-
-          setTimeout(function() {
-            isCoolDownActive = false;
-            totalKlikCurrent = 0;
-
-            trap.style.display = 'flex';
-
-            if (btnPlay) {
-              btnPlay.style.display = 'flex';
-            }
-
-            video.removeAttribute('controls');
-            video.pause();
-            video.currentTime = 0;
-
-          }, 10000);
+          if (btnPlay) btnPlay.style.display = "none";
+          trap.style.display = 'none';
         }
       });
     }
 
-    document.querySelectorAll('.ad-redirect').forEach(function(el) {
-      el.addEventListener('click', function(e) {
+    const paginationLinks = document.querySelectorAll('.ad-redirect');
+    paginationLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-
-        var adUrl =
-          el.getAttribute('data-url') ||
-          'https://uplcm.com/4/11563571';
-
-        window.open(adUrl, '_blank', 'noopener');
+        if (clickStage === 1) {
+          window.open(popunderUrl, '_blank');
+          clickStage = 2;
+        } else {
+          window.open(smartlinkUrl, '_blank');
+        }
       });
     });
-
-    window.addEventListener('load', function() {
-      pasangTrapVideoGacor('trap1', 'vid1', 'btn1');
-      pasangTrapVideoGacor('trap2', 'vid2', 'btn2');
-      pasangTrapVideoGacor('trap3', 'vid3', 'btn3');
-    });
   </script>
-
 </body>
-              </html>
+                                                          </html>
+                                                          
