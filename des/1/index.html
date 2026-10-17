@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>spesial edition</title>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vjjdeyracduk.my.id/Profitable">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --line: #e2e8f0;
+      --primary-green: #DAA200;
+      --primary-dark: #b8860b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      width: 100%; 
+      min-height: 100%; 
+      margin: 0; 
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--text); 
+      background: var(--bg); 
+      line-height: 1.45;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .appbar {
+      position: sticky; top: 0; z-index: 20;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    .bar-inner {
+      width: 100%; max-width: 1200px; margin-inline: auto;
+      display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+    }
+    .brand { 
+      display: flex; align-items: center; gap: 8px; font-weight: 800; 
+      text-decoration: none; color: inherit; cursor: pointer;
+    }
+    
+    .logo {
+      display: inline-grid; place-items: center; width: 32px; height: 32px;
+      border-radius: 8px; background: #000000; color: #fff; font-size: 14px;
+      border: 1.5px solid var(--primary-green);
+    }
+    .spacer { flex: 1; }
+    
+    .btn-upload {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--primary-green);
+      transition: background-color 0.2s ease;
+    }
+    .btn-upload:hover { background-color: #111111; }
+
+    .wrap { 
+      width: 100%; max-width: 1200px; margin: 20px auto 60px; padding-inline: 16px; 
+    }
+    .video-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px;
+      }
+    }
+
+    .video-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone {
+      position: relative;
+      width: clamp(240px, 92vw, 360px);
+      aspect-ratio: 9 / 16;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #000;
+      transform: translateZ(0);
+      will-change: transform;
+      box-shadow: 0 12px 35px rgba(218, 162, 0, 0.15);
+      border: 2px solid rgba(218, 162, 0, 0.3);
+    }
+    @media (min-width: 768px) {
+      .phone { width: 100%; }
+    }
+
+    .phone video { width: 100%; height: 100%; object-fit: cover; }
+
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 99;
+      background: rgba(0,0,0,0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 2px solid var(--primary-green);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .play-btn-icon:hover { 
+      transform: scale(1.08); 
+      background: rgba(218, 162, 0, 0.2);
+    }
+    .play-btn-icon::before {
+      content: "";
+      display: block;
+      width: 0; height: 0;
+      margin-left: 4px;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid #ffffff;
+      z-index: 2;
+    }
+
+    .divider-badge-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: -10px 0;
+      z-index: 10;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .divider-badge-wrapper {
+        display: none;
+      }
+    }
+
+    .divider-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #000000;
+      color: #DAA200;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1.5px solid var(--primary-green);
+      box-shadow: 0 0 15px rgba(218, 162, 0, 0.3);
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .divider-badge:hover {
+      background: var(--primary-green);
+      color: #000000;
+      transform: scale(1.05);
+    }
+
+    .divider-badge i {
+      font-size: 13px;
+    }
+    
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #000000;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      position: relative;
+      border: 1.5px solid var(--primary-green);
+    }
+    .pagination-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #000000;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      border: 1.5px solid var(--primary-green);
+      transition: transform 0.2s;
+    }
+    .pagination-btn:hover {
+      transform: scale(1.08);
+    }
+    .pagination-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 28px;
+      background: #0a0a0a;
+      border-radius: 9999px;
+      position: relative;
+      min-width: 150px;
+      border: 1px solid rgba(218, 162, 0, 0.6);
+    }
+    .pagination-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+    .pagination-info svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+    }
+    .pagination-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 5px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #444444;
+    }
+    .dot.active {
+      width: 16px;
+      border-radius: 4px;
+      background: var(--primary-green);
+    }
+
+  </style>
+  <script data-cfasync="false" src="https://abscloud.org/1/7dc0f51577c92b0e7166a7adf63b7a86"></script>
+</head>
+<body>
+
+  <header class="appbar">
+    <div class="bar-inner">
+      <a class="brand ad-redirect" href="#" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+        <span class="logo">V</span>
+        <span>VIDEY</span>
+      </a>
+      <div class="spacer"></div>
+      <a href="#" class="btn-upload ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">Upload</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="video-grid">
+      <!-- Video Card 1 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap1" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn1" class="play-btn-icon"></div>
+          </div>
+          <video id="vid1" playsinline preload="metadata" loop src="VID-20260902-WA0001.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap2" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn2" class="play-btn-icon"></div>
+          </div>
+          <video id="vid2" playsinline preload="metadata" loop src="VID-20260902-WA0002.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-bolt"></i> Update Koleksi Terbaru <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap3" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn3" class="play-btn-icon"></div>
+          </div>
+          <video id="vid3" playsinline preload="metadata" loop src="VID-20260902-WA0003.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 4 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap4" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn4" class="play-btn-icon"></div>
+          </div>
+          <video id="vid4" playsinline preload="metadata" loop src="VID-20260902-WA0004.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-bolt"></i> Update Koleksi Terbaru <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 5 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap5" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn5" class="play-btn-icon"></div>
+          </div>
+          <video id="vid5" playsinline preload="metadata" loop src="VID-20260902-WA0005.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 6 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap6" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn6" class="play-btn-icon"></div>
+          </div>
+          <video id="vid6" playsinline preload="metadata" loop src="VID-20260902-WA0006.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-bolt"></i> Update Koleksi Terbaru <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 7 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap7" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn7" class="play-btn-icon"></div>
+          </div>
+          <video id="vid7" playsinline preload="metadata" loop src="VID-20260902-WA0007.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 8 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap8" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn8" class="play-btn-icon"></div>
+          </div>
+          <video id="vid8" playsinline preload="metadata" loop src="VID-20260902-WA0008.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-bolt"></i> Update Koleksi Terbaru <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 9 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap9" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn9" class="play-btn-icon"></div>
+          </div>
+          <video id="vid9" playsinline preload="metadata" loop src="VID-20260902-WA0009.mp4"></video>
+        </div>
+      </div>
+
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Video Card 10 -->
+      <div class="video-card">
+        <div class="phone">
+          <div id="trap10" class="video-overlay" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385">
+            <div id="btn10" class="play-btn-icon"></div>
+          </div>
+          <video id="vid10" playsinline preload="metadata" loop src="VID-20260902-WA0010.mp4"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <div class="pagination-bar">
+        <a href="#" class="pagination-btn ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385" title="Sebelumnya">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </a>
+        <div class="pagination-center">
+          <div class="pagination-info">
+            <svg viewBox="0 0 24 24"><path d="M18 4H6C4.9 4 4 4.9 4 6V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V6C20 4.9 19.1 4 18 4ZM11 16H9V14H11V16ZM11 12H9V10H11V12ZM11 8H9V6H11V8ZM15 16H13V14H15V16ZM15 12H13V10H15V12ZM15 8H13V6H15V8Z"/></svg>
+            <span>01 / 03</span>
+          </div>
+          <div class="pagination-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <a href="#" class="pagination-btn ad-redirect" data-url="https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385" title="Berikutnya">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    var totalKlikCurrent = 0;     
+    var requiredClicks = 1;      
+    var isCoolDownActive = false;   
+    var allTraps = ['trap1', 'trap2', 'trap3', 'trap4', 'trap5', 'trap6', 'trap7', 'trap8', 'trap9', 'trap10']; 
+
+    document.querySelectorAll('.ad-redirect').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            var adUrl = el.getAttribute('data-url') || "https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385";
+            window.open(adUrl, '_blank');
+        });
+    });
+
+    function pasangTrapVideoGacor(trapId, vidId, btnId) {
+        var trap = document.getElementById(trapId);
+        var video = document.getElementById(vidId);
+        var btnPlay = document.getElementById(btnId);
+        if (!trap || !video) return;
+
+        var adUrl = trap.getAttribute('data-url') || "https://asiafilm.org/4/1b597d65e3fa566d005f9a1ec5e6d385";
+
+        trap.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (isCoolDownActive) return;
+
+            totalKlikCurrent++;
+            window.open(adUrl, '_blank');
+
+            if (totalKlikCurrent < requiredClicks) {
+                trap.style.display = 'none';
+                setTimeout(function() {
+                    trap.style.display = 'flex';
+                }, 200);
+            } else {
+                trap.style.display = 'none';
+                isCoolDownActive = true;
+
+                video.setAttribute("controls", "controls"); 
+                video.play().catch(function() {
+                    video.muted = true;
+                    video.play();
+                });
+                if(btnPlay) btnPlay.style.display = "none";
+
+                setTimeout(function() {
+                    isCoolDownActive = false;  
+                    totalKlikCurrent = 0;
+                    allTraps.forEach(function(id) {
+                        var targetTrack = document.getElementById(id);
+                        if (targetTrack) targetTrack.style.display = 'flex';
+                    });
+                }, 10000);
+            }
+        });
+    }
+
+    window.addEventListener('load', function() {
+        allTraps.forEach(function(id, index) {
+            var num = index + 1;
+            pasangTrapVideoGacor('trap' + num, 'vid' + num, 'btn' + num);
+        });
+    });
+  </script>
+</body>
+  </html>
+  
