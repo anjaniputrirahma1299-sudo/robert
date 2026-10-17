@@ -6,23 +6,15 @@
   <title>spesial edition</title>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vjjdeyracduk.my.id/Profitable">
-  <meta property="og:title" content="spesial edition">
-  <meta property="og:description" content="spesial edition terbaru viral">
-  <meta property="og:image" content="https://i.ibb.co.com/1fvJ1mRy/IMG-20261010-WA0002.jpg">
-  <meta property="og:image:secure_url" content="https://i.ibb.co.com/1fvJ1mRy/IMG-20261010-WA0002.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="spesial edition">
-  <meta name="twitter:description" content="spesial edition terbaru viral">
-  <meta name="twitter:image" content="https://i.ibb.co.com/1fvJ1mRy/IMG-20261010-WA0002.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   
   <style>
     :root {
       --bg: #ffffff;
       --text: #0f172a;
       --line: #e2e8f0;
+      --primary-green: #22c55e;
+      --primary-dark: #16a34a;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -60,7 +52,7 @@
     .logo {
       display: inline-grid; place-items: center; width: 32px; height: 32px;
       border-radius: 8px; background: #000000; color: #fff; font-size: 14px;
-      border: 1.5px solid #a855f7;
+      border: 1.5px solid var(--primary-green);
     }
     .spacer { flex: 1; }
     
@@ -75,7 +67,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid #a855f7;
+      border: 1.5px solid var(--primary-green);
       transition: background-color 0.2s ease;
     }
     .btn-upload:hover { background-color: #111111; }
@@ -96,12 +88,14 @@
         grid-template-columns: repeat(3, 1fr); 
         gap: 30px;
       }
+    }
 
     .video-card {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .phone {
@@ -113,6 +107,8 @@
       background: #000;
       transform: translateZ(0);
       will-change: transform;
+      box-shadow: 0 12px 35px rgba(34, 197, 94, 0.15);
+      border: 2px solid rgba(34, 197, 94, 0.3);
     }
     @media (min-width: 768px) {
       .phone { width: 100%; }
@@ -124,7 +120,7 @@
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: 99;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -140,9 +136,13 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      border: 2px solid #a855f7;
+      border: 2px solid var(--primary-green);
+      transition: transform 0.2s ease, background 0.2s ease;
     }
-    .play-btn-icon:hover { transform: scale(1.08); }
+    .play-btn-icon:hover { 
+      transform: scale(1.08); 
+      background: rgba(34, 197, 94, 0.2);
+    }
     .play-btn-icon::before {
       content: "";
       display: block;
@@ -152,8 +152,8 @@
       border-bottom: 12px solid transparent;
       border-left: 20px solid #ffffff;
       z-index: 2;
-    
     }
+
     .divider-badge-wrapper {
       display: flex;
       justify-content: center;
@@ -167,37 +167,42 @@
     @media (min-width: 768px) {
       .divider-badge-wrapper {
         display: none;
+      }
     }
+
     .divider-badge {
-       display: inline-flex;
-       align-items: center;
-       gap: 8px;
-       background: #000000;
-       color: #a855f7;
-       padding: 6px 16px;
-       border-radius: 50px;
-       font-size: 11px;
-       font-weight: 800;
-       text-transform: uppercase;
-       letter-spacing: 1px;
-       border: 1.5px solid var(--primary-green);
-       box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
-       text-decoration: none;
-       transition: transform 0.2s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #000000;
+      color: #22c55e;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1.5px solid var(--primary-green);
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
+
     .divider-badge:hover {
-       background: var(--primary-green);
-       color: #000000;
-       transform: scale(1.05);
+      background: var(--primary-green);
+      color: #000000;
+      transform: scale(1.05);
     }
+
     .divider-badge i {
-       font-size: 13px;
+      font-size: 13px;
     }
-     .pagination-container {
-       display: flex;
-       justify-content: center;
-       margin-top: 50px;
-       margin-bottom: 40px;
+    
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      margin-bottom: 40px;
     }
     .pagination-bar {
       display: flex;
@@ -207,7 +212,7 @@
       padding: 10px 18px;
       border-radius: 9999px;
       position: relative;
-      border: 1.5px solid #a855f7;
+      border: 1.5px solid var(--primary-green);
     }
     .pagination-btn {
       width: 50px;
@@ -220,7 +225,7 @@
       justify-content: center;
       color: #ffffff;
       text-decoration: none;
-      border: 1.5px solid #a855f7;
+      border: 1.5px solid var(--primary-green);
       transition: transform 0.2s;
     }
     .pagination-btn:hover {
@@ -235,7 +240,7 @@
       border-radius: 9999px;
       position: relative;
       min-width: 150px;
-      border: 1px solid rgba(168, 85, 247, 0.6);
+      border: 1px solid rgba(34, 197, 94, 0.6);
     }
     .pagination-info {
       display: flex;
@@ -265,7 +270,48 @@
     .dot.active {
       width: 16px;
       border-radius: 4px;
-      background: #d946ef;
+      background: var(--primary-green);
+    }
+
+    .telegram-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .btn-telegram {
+      width: 100%;
+      min-height: 76px;
+      padding: 18px 24px;
+      box-sizing: border-box;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      background: #000000;
+      color: #ffffff;
+      border: 2px solid #22c55e;
+      border-radius: 999px;
+
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 1px;
+
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.25);
+      transition: background 0.2s ease;
+    }
+
+    .btn-telegram:hover {
+      background: #111111;
+    }
+
+    .btn-telegram i {
+      font-size: 24px;
     }
   </style>
   <script>(function(s){s.dataset.zone='11563270',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
@@ -285,90 +331,60 @@
 
   <main class="wrap">
     <div class="video-grid">
+      <!-- Video Card 1 -->
       <div class="video-card">
         <div class="phone">
           <div id="trap1" class="video-overlay" data-url="https://uplcm.com/4/11563571">
             <div id="btn1" class="play-btn-icon"></div>
           </div>
-          <video id="vid1" playsinline preload="metadata" loop src="VID-20260916-WA0000.mp4"></video>
+          <video id="vid1" playsinline preload="metadata" loop src="VID-20260902-WA0001.mp4"></video>
         </div>
       </div>
-    </div>
-    
-    <div class="divider-badge-wrapper">
-        <a href="#" class="divider-badge ad-redirect">
+
+      <!-- Divider Badge -->
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://uplcm.com/4/11563571">
           <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
         </a>
-    </div>
-    
-  <main class="wrap">
-    <div class="video-grid">
+      </div>
+
+      <!-- Video Card 2 (Tambahan untuk melengkapi layout 3 video seperti skrip ke-2) -->
       <div class="video-card">
         <div class="phone">
-          <div id="trap1" class="video-overlay" data-url="https://uplcm.com/4/11563571">
-            <div id="btn1" class="play-btn-icon"></div>
+          <div id="trap2" class="video-overlay" data-url="https://uplcm.com/4/11563571">
+            <div id="btn2" class="play-btn-icon"></div>
           </div>
-          <video id="vid1" playsinline preload="metadata" loop src="VID-20260916-WA0000.mp4"></video>
+          <video id="vid2" playsinline preload="metadata" loop src="VID-20261011-WA0005.mp4"></video>
         </div>
       </div>
-    </div>
 
-    <div class="divider-badge-wrapper">
-        <a href="#" class="divider-badge ad-redirect">
-          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
+      <!-- Divider Badge -->
+      <div class="divider-badge-wrapper">
+        <a href="#" class="divider-badge ad-redirect" data-url="https://uplcm.com/4/11563571">
+          <i class="fas fa-bolt"></i> Update Koleksi Terbaru <i class="fas fa-chevron-right"></i>
         </a>
-    </div>
-    
-   <main class="wrap">
-    <div class="video-grid">
+      </div>
+
+      <!-- Video Card 3 -->
       <div class="video-card">
         <div class="phone">
-          <div id="trap1" class="video-overlay" data-url="https://uplcm.com/4/11563571">
-            <div id="btn1" class="play-btn-icon"></div>
+          <div id="trap3" class="video-overlay" data-url="https://uplcm.com/4/11563571">
+            <div id="btn3" class="play-btn-icon"></div>
           </div>
-          <video id="vid1" playsinline preload="metadata" loop src="VID-20260916-WA0000.mp4"></video>
+          <video id="vid3" playsinline preload="metadata" loop src="VID-20260904-WA0013.mp4"></video>
         </div>
       </div>
     </div>
 
-     <div class="divider-badge-wrapper">
-        <a href="#" class="divider-badge ad-redirect">
-          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
-        </a>
-     </div>
-
-  <main class="wrap">
-    <div class="video-grid">
-      <div class="video-card">
-        <div class="phone">
-          <div id="trap1" class="video-overlay" data-url="https://uplcm.com/4/11563571">
-            <div id="btn1" class="play-btn-icon"></div>
-          </div>
-          <video id="vid1" playsinline preload="metadata" loop src="VID-20260916-WA0000.mp4"></video>
-        </div>
-      </div>
+    <!-- Tombol Telegram Bawah -->
+    <div class="telegram-container">
+      <a href="https://t.me/spesialedition" class="btn-telegram" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram-plane"></i>
+        JOIN MY TELEGRAM 
+      </a>
     </div>
 
-    <div class="divider-badge-wrapper">
-        <a href="#" class="divider-badge ad-redirect">
-          <i class="fas fa-fire"></i> Trending Video Lainnya <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
-
- <main class="wrap">
-    <div class="video-grid">
-      <div class="video-card">
-        <div class="phone">
-          <div id="trap1" class="video-overlay" data-url="https://uplcm.com/4/11563571">
-            <div id="btn1" class="play-btn-icon"></div>
-          </div>
-          <video id="vid1" playsinline preload="metadata" loop src="VID-20260916-WA0000.mp4"></video>
-        </div>
-      </div>
-    </div>
-      
-      
-  
+    <!-- Pagination -->
     <div class="pagination-container">
       <div class="pagination-bar">
         <a href="#" class="pagination-btn ad-redirect" data-url="https://uplcm.com/4/11563571" title="Sebelumnya">
@@ -396,9 +412,8 @@
     var totalKlikCurrent = 0;     
     var requiredClicks = 1;      
     var isCoolDownActive = false;   
-    var allTraps = ['trap1']; 
+    var allTraps = ['trap1', 'trap2', 'trap3']; 
 
-    
     document.querySelectorAll('.ad-redirect').forEach(function(el) {
         el.addEventListener('click', function(e) {
             e.preventDefault();
@@ -413,7 +428,7 @@
         var btnPlay = document.getElementById(btnId);
         if (!trap || !video) return;
 
-        var adUrl = trap.getAttribute('data-url');
+        var adUrl = trap.getAttribute('data-url') || "https://uplcm.com/4/11563571";
 
         trap.addEventListener('click', function(e) {
             e.preventDefault();
@@ -425,13 +440,11 @@
             window.open(adUrl, '_blank');
 
             if (totalKlikCurrent < requiredClicks) {
-                
                 trap.style.display = 'none';
                 setTimeout(function() {
                     trap.style.display = 'flex';
                 }, 200);
             } else {
-                
                 trap.style.display = 'none';
                 isCoolDownActive = true;
 
@@ -456,7 +469,10 @@
 
     window.addEventListener('load', function() {
         pasangTrapVideoGacor('trap1', 'vid1', 'btn1');
+        pasangTrapVideoGacor('trap2', 'vid2', 'btn2');
+        pasangTrapVideoGacor('trap3', 'vid3', 'btn3');
     });
   </script>
 </body>
-</html>
+        </html>
+  
